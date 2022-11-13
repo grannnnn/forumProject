@@ -1,0 +1,53 @@
+/*Информация о авторизированном пользователе*/
+
+.u_articles{
+		display: grid;
+		grid-template-columns: 13fr 11fr;
+}
+
+aside nav{
+	margin: 0 0 25px 0;
+  margin-bottom: 25px;
+	padding: 0;
+	background: none;
+	margin-top: 90px;
+}
+
+aside h1, footer h1{
+	font-size: 18px;
+	line-height: 28px;
+	height: 28px;
+	margin-bottom: 10px;
+	background-color: #0081ac;
+	box-shadow: inset 0 -28px 35px -18px #005b79;
+	background-image: -moz-linear-gradient(top, #0081ac, #005b79);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #0081ac),color-stop(1, #005b79));
+	color: #fff;
+	padding: 0 10px;
+	border: 1px solid #6e7e93;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+aside ul, footer ul{
+	list-style: none;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+aside li, footer li{
+	font-size: 16px;
+	line-height: 20px;
+	margin-bottom: 5px;
+	text-align: left;
+	border-bottom: 1px solid #81aeab;
+	-o-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-webkit-transition: all 0.5s ease-out;
+	text-decoration: none;
+}
+
+aside nav ul li a, footer ul li a{
+	text-decoration: none;
+}

@@ -1,0 +1,36 @@
+/*Общие настройки*/
+
+	body {
+
+		background-color: rgb(125,172,169);
+		margin-right: 300px;
+    margin-left: 300px;
+	}
+	#main-block {
+		min-width: 290px;
+		max-width: 1500px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.main-contaner, footer {
+			margin-top: 10px; /*Внешний отступ*/
+	}
+
+	article, aside, .footer-block {
+			border: 1px solid rgb(125,132,107);
+			background-color: rgb(235,232,217);
+			border-radius: 13px;
+	}
+
+  /*Стиль для одинаковых боксов*/
+
+  .all_box{
+  	border: 1px solid rgb(125,132,107);
+  	background-color: rgb(235,232,217);
+  	border-radius: 13px;
+  	padding: 20px;
+  	margin: 0 47px 30px 0;
+
+  }

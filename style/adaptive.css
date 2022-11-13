@@ -1,0 +1,43 @@
+/*Адаптивная верстка сайта*/
+@media (max-width: 750px){
+  .main-contaner {
+    grid-template-columns: 68% 32%;
+  }
+}
+@media (max-width: 620px){
+  .main-contaner {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
+  main {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 480px){
+  .footer-contaner {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+  }
+  .footer-block {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  nav{
+  width: 290px;
+  margin: 0 auto;
+  text-align: center;
+  }
+  nav ul{
+    flex-direction: column;
+    margin-right: 10%
+  }
+  header {
+  height: auto; /* Высота блока */
+  }
+  @media (max-width: 320px){
+    #logo-block, aside{
+      display: none;
+    }
+  }
+}

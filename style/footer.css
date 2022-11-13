@@ -1,0 +1,18 @@
+/*Подвал сайта*/
+footer {
+    width: 100%; /* Ширина блока */
+}
+.footer-contaner {
+  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.footer-block {
+  min-height: 80px; /* Высота блока */
+  margin-left: 10px;
+  text-align: center;
+  padding: 10px;
+}
+.footer-down {
+  text-align: center;
+  margin-top: 5px;
+}
