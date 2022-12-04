@@ -1,6 +1,6 @@
 <?php
   unset($_SESSION['id']);
-  unset($_SESSION['login']);
+  $_SESSION['login']="";
   unset($_SESSION['a_u']);
-  //echo "<script>self.location='../header/articles.php';</script>";
+  echo "<script>self.location='../index.php';</script>";
  ?>

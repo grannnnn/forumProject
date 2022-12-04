@@ -1,9 +1,11 @@
 ﻿<?php
 	session_start();
+//	error_reporting(0);
 	$p = $_GET['p'];
+
 	if(isset($_GET['id_art']))  $id_art = $_GET['id_art']; else $id_art = '';
 	if(isset($_GET['s']))  $s = $_GET['s']; else $s = 0;
-		if(isset($_GET['page']))  $page = $_GET['page']; else $page = 0;
+	if(isset($_GET['page']))  $page = $_GET['page']; else $page = 0;
 	$mysqli = new mysqli('localhost', 'root', '', 'site_web');
 	if(mysqli_connect_errno()){
 		printf("Соединение не установлено,", mysqli_connect_errno());

@@ -9,14 +9,15 @@
     if(isset($_POST['text']))  $text = $_POST['text']; else $text = '';
 
     if($year == '' && $date == '' && $date_2 == '' && $title == '' && $text == ''){
-      $_SESSION['massage2'] = 'Статья добавлена';
+        $_SESSION['massage2'] = ' ';
     }
     else {
       $comm = rand(5, 50);
       $rez = $mysqli->query("INSERT INTO `article` (`id_ar`, `year`, `date`, `date_2`,
         `title`, `comment`, `text`, `author`) VALUES (NULL,'$year', '$date', '$date_2',
         '$title', '$comm', '$text', '$_SESSION[login]'); ");
-      $_SESSION['massage2'] = ' ';
+        $_SESSION['massage2'] = 'Статья добавлена';
+
     }
 
     echo '

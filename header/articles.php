@@ -10,19 +10,19 @@
 			//кол-во статей на главном экране
 			if (!isset($_SESSION['id'])) $a_u = 5; else $a_u = $_SESSION['a_u'];
 
-			//рассчитываем кол-во страниц
-			$pa_max = ceil($a_max/$a_u);
-			$a_s = 1 + $page * $a_u;
-			$a_f = $a_u +  $page;
-
 			if(isset($_GET["s"])) $u_page = $_GET["s"]; else $u_page=0;
+
+			//рассчитываем начальную и конечную статью на странице
+			$pa_max = ceil($a_max/$a_u);
+			$a_s = $u_page * $a_u;//5
+			$a_f = $a_u +  $u_page * $a_u;//5+1
 
 			//достаем статьи из базы
 			$query = $mysqli->query("SELECT * FROM article LIMIT $a_s,$a_f");
-			//if (!isset($_SESSION['id'])){
-				for ($i = $a_s; $i <= $a_f; $i++){
+				for ($i = $a_s; $i < $a_f; $i++){
+					if ($i == $a_max) break;
 					$row = mysqli_fetch_assoc($query);
-					if (isset($_SESSION['id'])&&$_SESSION['login'] = "admin"){
+					if (isset($_SESSION['id'])&&$_SESSION['login'] == "admin"||$_SESSION['login']==$row['author']){
 					echo
 						'<article>
               <header class="article-head">
@@ -36,9 +36,10 @@
               <p>'.$row['text'].'</p>
               <footer class="article-foot_u">
 							<p style = "color:black;" class="author-article">Автор: '.$row['author'].'</p>
-                <button type=button class="article-open-button article-u-button" onclick="openArticle(1)">Открыть статью</button>
-                 <a class="article-open-button article-u-button" href="index.php?p=article_del&id_art='.$row['id_ar'].'">Удалить</a>
-                 <a class="article-open-button article-u-button" href="index.php?p=article_edit">Редактировать</a>
+                <button type=button class="article-open-button article-u-button" onclick="openArticle(1)" style="margin-top: 5px;
+">Открыть статью</button>
+                 <a class="article-open-button article-u-button" id = "but" href="index.php?p=article_del&id_art='.$row['id_ar'].'">Удалить</a>
+                 <a class="article-open-button article-u-button" id = "but" href="index.php?p=article_edit">Редактировать</a>
 
               </footer>
             </article>';
@@ -61,7 +62,7 @@
 							</footer>
 						</article>';
 					}
-					if ($i == $a_max) break;
+
 				}
 
 				if($pa_max>1){

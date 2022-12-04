@@ -2,6 +2,7 @@
 		<?php
 			if ($p == "register") include "service/reg.php";
 			elseif ($p == "logout") include "service/logout.php";
+			elseif ($p == "log") include "service/log.php";
 
 			if(isset($_POST['login']))  $l = $_POST['login']; else $l = '';
 			if(isset($_POST['password']))  $p = $_POST['password']; else $p = '';
@@ -17,6 +18,7 @@
 				$_SESSION['id'] = $user['id_user'];
 				$_SESSION['login'] = $user['login'];
 				$_SESSION['a_u'] = $user['articles'];
+				echo "<script>self.location='../index.php';</script>";
 			}
 			else {
 				$_SESSION['massage'] = 'Неверный логин или пароль';
@@ -79,6 +81,7 @@
 							<li><a href=#>Links with Us</a></li>
 						</ul>
 					</nav>';
+
 				}
 				}
 
