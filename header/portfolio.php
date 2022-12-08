@@ -43,7 +43,7 @@
               <footer class="article-foot_u">
                 <button type=button class="article-open-button article-u-button" onclick="openArticle(1)">Открыть статью</button>
                  <a class="article-open-button article-u-button" href="index.php?p=article_del&id_art='.$row['id_ar'].'">Удалить</a>
-                 <a class="article-open-button article-u-button" href="index.php?p=article_edit">Редактировать</a>
+                 <a class="article-open-button article-u-button" href="index.php?p=article_edit&id_art='.$row['id_ar'].'">Редактировать</a>
 
               </footer>
             </article>';

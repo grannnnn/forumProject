@@ -27,6 +27,7 @@
 	elseif ($p == "article_add") include "service/article_add.php";
 	elseif ($p == "article_edit") include "service/article_edit.php";
 	elseif ($p == "article_del") include "service/article_del.php";
+	elseif ($p == "article_edit") include "service/article_edit.php";
 	else include "header/articles.php";
 
 
