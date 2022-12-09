@@ -1,3 +1,7 @@
+<!--Центральная часть сайта-->
+	<div class=main-contaner>
+		<main class="all_box">
+
 <?php
 
 $_SESSION['massage2'] = ' ';
@@ -56,3 +60,4 @@ else {
 
 
  ?>
+		</main>

@@ -9,7 +9,7 @@
 						$query = $mysqli->query("SELECT * FROM `article` order by `comment` limit 5");
 						for ($i = 0; $i < 5; $i++){
 							$row = mysqli_fetch_assoc($query);
-							echo '<li><a href=#>'.$row['title'].'</a></li>';
+							echo '<li><a href="index.php?p=article&id_art='.$row['id_ar'].'">'.$row['title'].'</a></li>';
 						}
 
 						?>
@@ -21,17 +21,17 @@
 					<h1>Recent Comments</h1>
 					<ul id=comments>
 						<li>
-							<a href=#>Tincidunt justo sed feugiat eget ligula nec, porta luctus&hellip;</a>
+							<a href="">Tincidunt justo sed feugiat eget ligula nec, porta luctus&hellip;</a>
 							<br>
 							<span class=newLine><strong>Comment Author</strong>, 20. 04. 2010.</span>
 						</li>
 						<li>
-							<a href=#>Primis suspendisse tellus facilisis&hellip;</a>
+							<a href="">Primis suspendisse tellus facilisis&hellip;</a>
 							<br>
 							<span class=newLine><strong>Comment Author</strong>, 5. 04. 2010.</span>
 						</li>
 						<li>
-							<a href=#>Sed vestibulum, ut pulvinar iaculis nam ullamcorper pharetra&hellip;</a>
+							<a href="">Sed vestibulum, ut pulvinar iaculis nam ullamcorper pharetra&hellip;</a>
 							<br>
 							<span class=newLine><strong>Comment Author</strong>, 28. 03. 2010.</span>
 						</li>
