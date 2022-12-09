@@ -6,12 +6,11 @@
 					<h1>Popular Posts</h1>
 					<ul class=links>
 						<?php
-						$query = $mysqli->query("SELECT * FROM `article` order by `comment` limit 5");
+						 $query = PopPostFooter();
 						for ($i = 0; $i < 5; $i++){
-							$row = mysqli_fetch_assoc($query);
+					    $row = mysqli_fetch_assoc($query);
 							echo '<li><a href="index.php?p=article&id_art='.$row['id_ar'].'">'.$row['title'].'</a></li>';
 						}
-
 						?>
 					</ul>
 				</section>
