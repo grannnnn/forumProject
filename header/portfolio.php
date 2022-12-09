@@ -2,6 +2,19 @@
   <div class="">
     <?php
 
+    function getMouthName($m){
+      $rusMonthNames = [
+        '01' => 'Янв',  '02' => 'Фев',  '03' => 'Мар',  '04' => 'Апр',   '05' => 'Май',
+        '06' => 'Июн',  '07' => 'Июл',  '08' => 'Авг',  '09' => 'Сен',
+        '10' => 'Окт',  '11' => 'Ноя',  '12' => 'Дек'];
+        return $rusMonthNames[$m];
+    }
+
+    function getDateForBD($date){
+      $datem = explode("-", $date);
+      $datem[1] = getMouthName($datem[1]);
+      return $datem;
+    }
 
     if(!isset($_SESSION['id']))
     echo '<p class = "about all_box">Тут могли располагаться ваши статьи. Войдите чтобы начать!</p>';
@@ -14,7 +27,7 @@
       $u_a_max = $rez->fetch_object()->art_count;
       $rez->free();
 
-      echo '<a style="bottom: 10px;" class="article-open-button article-u-button" href="index.php?p=article_add">Создать статью</a>';
+      echo '<a style="bottom: 10px;" class="art-create article-open-button article-u-button" href="index.php?p=article_add">Создать статью</a>';
       if ($u_a_max>0){
         //кол-во статей на главном экране, которые написал пользователь
         if (!isset($_SESSION['id'])) $u_a_u = 5; else $u_a_u = $_SESSION['a_u'];
@@ -29,21 +42,22 @@
         //if (!isset($_SESSION['id'])){
           for ($i = $u_a_s; $i <= $u_a_f; $i++){
             $row = mysqli_fetch_assoc($query);
+            $datem = getDateForBD($row['date']);
             echo
             '<article>
               <header class="article-head">
                 <div class = "time">
-                  <div class = year>'.$row['year'].'</div>
-                  <div class = date>'.$row['date'].'<span>'.$row['date_2'].'</span></div>
+                  <div class = year>'.$datem[0].'</div>
+                  <div class = date>'.$datem[1].'<span>'.$datem[2].'</span></div>
                 </div>
                  <h2>'.$row['title'].'</h2>
                  <button type=button class="article-button" onclick="delArticle(1)">'.$row['comment'].'</button>
               </header>
               <p>'.$row['text'].'</p>
               <footer class="article-foot_u">
-                <button type=button class="article-open-button article-u-button" onclick="openArticle(1)">Открыть статью</button>
-                 <a class="article-open-button article-u-button" href="index.php?p=article_del&id_art='.$row['id_ar'].'">Удалить</a>
-                 <a class="article-open-button article-u-button" href="index.php?p=article_edit&id_art='.$row['id_ar'].'">Редактировать</a>
+                  <a class="article-open-button article-u-button" id = "but" href="index.php?p=article&id_art='.$row['id_ar'].'">Открыть статью</a>
+                 <a class="article-open-button article-u-button" id = "but" href="index.php?p=article_del&id_art='.$row['id_ar'].'">Удалить</a>
+                 <a class="article-open-button article-u-button" id = "but" href="index.php?p=article_edit&id_art='.$row['id_ar'].'">Редактировать</a>
 
               </footer>
             </article>';

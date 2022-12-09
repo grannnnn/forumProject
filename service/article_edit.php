@@ -1,50 +1,33 @@
 <?php
-function getNameMouth($m){
-  $nMoth ='';
-  $rusMonthNames = [
-    1 => 'Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек',];
 
-    foreach ($rusMonthNames  as $key => $value) {
-      if($value==$m){
-        return $key;
-      }
-    }
-}
-
-function getDateForSite($year, $date_2, $date){
-  $o = array('1','2','3','4','5','6','7','8','9');
-  $datem[0] = $year; $datem[1] = $date_2; $datem[2] = $date;
-  $datem[1] = getNameMouth($datem[1]);
-  if(in_array($datem[1], $o)&&in_array($datem[2], $o)){
-    $date = implode("-0", $datem);
-  }
-  else if(in_array($datem[1], $o)){
-    $date = $datem[0].'-0'.$datem[1].'-'.$datem[2];
-  }
-  elseif (in_array($datem[2], $o)) {
-    $date = $datem[0].'-'.$datem[1].'-0'.$datem[2];
-  }
-  else {
-    $date = implode("-", $datem);
-  }
-  return $date;
-}
-
+$_SESSION['massage2'] = ' ';
+unset($_POST['text1'], $_POST['date1'], $_POST['text1']);
 if (isset($_SESSION['id'])){
-  $_SESSION['massage2'] = ' ';
+  if(isset($_POST['date1']))  $date = $_POST['date']; else $date = '';
+  if(isset($_POST['title1']))  $title = $_POST['title']; else $title = '';
+  if(isset($_POST['text1']))  $text = $_POST['text']; else $text = '';
+
+  if(isset($_POST['date1']) && isset($_POST['title1']) && isset($_POST['text1'])){
+      $rez = $mysqli->query("UPDATE `article` SET `date` = '$date',`title` = '$title1',
+        `text` = '$text1' WHERE `article`.`id_ar` = '$id_art'; ");
+      $_SESSION['massage2'] = 'Статья отредактирована';
+      unset($_POST['text1'], $_POST['date1'], $_POST['text1']);
+  }
+
+
+
   $rez = $mysqli->query("SELECT * FROM article WHERE author = '$_SESSION[login]' AND id_ar= '$id_art'");
   if(isset($rez)||$_SESSION['login']=='admin'){
     $row = mysqli_fetch_assoc($rez);
-    $date = getDateForSite($row['year'], $row['date_2'], $row['date']);
     echo '
     <form id="article_edit" method="post">
             <p>Дата написания статьи:</p>
-            <input id = "lp" type="date"  maxlength="25" size="auto" name="date" value ='.$date.'></p>
+            <input id = "lp" type="date"  maxlength="25" size="auto" name="date1" value ='.$row['date'].'></p>
             <p>Заголовок:</p>
-            <input id = "lp" type="text" maxlength="25" size="auto" name="title" value="'.$row['title'].'"></p>
+            <input id = "lp" type="text" maxlength="25" size="auto" name="title1" value="'.$row['title'].'"></p>
             <p>Текст статьи:</p>
-            <textarea  id = "lp" cols="70" rows="3">'.$row['text'].'</textarea>
-            <button id = "lpb" type="submit" form="article_add">Добавить</button>
+            <textarea  id = "lp" cols="70" rows="3" name = "text1">'.$row['text'].'</textarea>
+            <button id = "lpb" type="submit" form="article_edit">Добавить</button>
             <p class = "massage">'.$_SESSION['massage2'].'</p>
       </form>
 <script>

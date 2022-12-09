@@ -5,11 +5,14 @@
 				<section>
 					<h1>Popular Posts</h1>
 					<ul class=links>
-						<li><a href=#>Lacus suspendisse risus consequat nec nunc quis sed</a></li>
-						<li><a href=#>Diam turpis maecenas</a></li>
-						<li><a href=#>Leo egestas cursus erat sed curabitur</a></li>
-						<li><a href=#>Scelerisque maecenas id</a></li>
-						<li><a href=#>Ornare magna orci</a></li>
+						<?php
+						$query = $mysqli->query("SELECT * FROM `article` order by `comment` limit 5");
+						for ($i = 0; $i < 5; $i++){
+							$row = mysqli_fetch_assoc($query);
+							echo '<li><a href=#>'.$row['title'].'</a></li>';
+						}
+
+						?>
 					</ul>
 				</section>
 			</div>

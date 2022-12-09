@@ -2,6 +2,23 @@
 	<div class=main-contaner>
 		<main id=content>
 			<?php
+
+
+			function getMouthName($m){
+				$rusMonthNames = [
+					'01' => 'Янв',  '02' => 'Фев',  '03' => 'Мар',  '04' => 'Апр',   '05' => 'Май',
+					'06' => 'Июн',  '07' => 'Июл',  '08' => 'Авг',  '09' => 'Сен',
+					'10' => 'Окт',  '11' => 'Ноя',  '12' => 'Дек'];
+					return $rusMonthNames[$m];
+			}
+
+			function getDateForBD($date){
+				$datem = explode("-", $date);
+				$datem[1] = getMouthName($datem[1]);
+				return $datem;
+			}
+
+
 			//считаем сначала кол-во статей в базе
 			$rez = $mysqli->query('SELECT COUNT(*) as art_count FROM article');
 			$a_max = $rez->fetch_object()->art_count;
@@ -22,13 +39,14 @@
 				for ($i = $a_s; $i < $a_f; $i++){
 					if ($i == $a_max) break;
 					$row = mysqli_fetch_assoc($query);
+					$datem = getDateForBD($row['date']);
 					if (isset($_SESSION['id'])&&$_SESSION['login'] == "admin"||$_SESSION['login']==$row['author']){
 					echo
 						'<article>
               <header class="article-head">
                 <div class = "time">
-                  <div class = year>'.$row['year'].'</div>
-                  <div class = date>'.$row['date'].'<span>'.$row['date_2'].'</span></div>
+                  <div class = year>'.$datem[0].'</div>
+                  <div class = date>'.$datem[1].'<span>'.$datem[2].'</span></div>
                 </div>
                  <h2>'.$row['title'].'</h2>
                  <button type=button class="article-button" onclick="delArticle(1)">'.$row['comment'].'</button>
@@ -36,8 +54,7 @@
               <p>'.$row['text'].'</p>
               <footer class="article-foot_u">
 							<p style = "color:black;" class="author-article">Автор: '.$row['author'].'</p>
-                <button type=button class="article-open-button article-u-button" onclick="openArticle(1)" style="margin-top: 5px;
-">Открыть статью</button>
+                <a class="article-open-button article-u-button" id = "but" href="index.php?p=article&id_art='.$row['id_ar'].'">Открыть статью</a>
                  <a class="article-open-button article-u-button" id = "but" href="index.php?p=article_del&id_art='.$row['id_ar'].'">Удалить</a>
                  <a class="article-open-button article-u-button" id = "but" href="index.php?p=article_edit&id_art='.$row['id_ar'].'">Редактировать</a>
 
@@ -49,8 +66,8 @@
 						'<article>
 							<header class="article-head">
 								<div class = "time">
-									<div class = year>'.$row['year'].'</div>
-									<div class = date>'.$row['date'].'<span>'.$row['date_2'].'</span></div>
+									<div class = year>'.$datem[0].'</div>
+									<div class = date>'.$datem[1].'<span>'.$datem[2].'</span></div>
 								</div>
 							   <h2>'.$row['title'].'</h2>
 							   <button type=button class="article-button" onclick="delArticle(1)">'.$row['comment'].'</button>
@@ -58,7 +75,7 @@
 							<p>'.$row['text'].'</p>
 							<footer class="article-foot">
 							   <p style = "color:black;" class="author-article">Автор: '.$row['author'].'</p>
-							   <button type=button class="article-open-button" onclick="openArticle(1)">Открыть статью</button>
+							     <a class="article-open-button article-u-button" id = "but" href="index.php?p=article&id_art='.$row['id_ar'].'">Открыть статью</a>
 							</footer>
 						</article>';
 					}

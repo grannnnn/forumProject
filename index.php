@@ -24,6 +24,7 @@
 	elseif ($p == "service&2") include "header/services/service2.php";
 	elseif ($p == "service&3") include "header/services/service3.php";
 	elseif ($p == "contact") include "header/contact.php";
+	elseif ($p == "article") include "service/article.php";
 	elseif ($p == "article_add") include "service/article_add.php";
 	elseif ($p == "article_edit") include "service/article_edit.php";
 	elseif ($p == "article_del") include "service/article_del.php";

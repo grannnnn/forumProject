@@ -70,7 +70,7 @@ article{
 .article-button{
 		border: 1px solid rgb(0,80,120);
 		border-radius: 8px;
-		height: auto;
+		height: 40px;
 		width: 60px;
 	  background-color: #ca0000;
 		color: #eee;
@@ -96,8 +96,10 @@ article{
 		height: 20px;
 		font: small-caption;
 		color: black;
+		margin-bottom: 12px;
 	}
 	.author-article{
+		margin-bottom: 20px;
 		margin-block-start: 0px;
 	}
 	.article-open-button{
@@ -122,7 +124,18 @@ article{
 
 }
 
+.article-foot_u{
+	margin-top: 20px;
+}
+
+.art-create{
+	bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 #but{
+	height: 17px;
 	padding-top: 9px;
 	padding-bottom: 9px;
 }
