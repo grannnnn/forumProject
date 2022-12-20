@@ -12,7 +12,7 @@ function logoutAction(){
   unset($_SESSION['id']);
   $_SESSION['login']="";
   unset($_SESSION['a_u']);
-  echo "<script>self.location='../index.php';</script>";
+  echo "<script>self.location='/';</script>";
 }
 
 function registerAction(){
@@ -44,7 +44,7 @@ function registerAction(){
   else  $_SESSION['massage'] = 'Пароли не совпадают';
 
 
-  echo '<div class = forma2>
+  echo '<div class = "forma2 asside">
     <form  class = "formra" id="Register" method="POST">
       <p>Регистрация</p>
       <input id = "lp" type="text" placeholder="Логин" maxlength="25" size="auto" name="rlogin"></p>
@@ -53,7 +53,7 @@ function registerAction(){
       <input id = "lp" type="password" placeholder="Повторите пароль" maxlength="25" size="auto" name="rpassword2"></p>
       <button id = "lpb" type="submit" form="Register">Зарегистрироваться</button>
       <p class = "massage">'.$_SESSION['massage'].'</p>
-      <p >У вас есть аккаунт? - <a id = "reg" href="index.php?p=index">авторизируйтесь!</a></p>
+      <p >У вас есть аккаунт? - <a id = "reg" href="/main/">авторизируйтесь!</a></p>
     </form>
   </div>';
 
@@ -61,36 +61,6 @@ function registerAction(){
   loadModel('Footer', 'indexFooter');
  }
 
- function openAction(){
-   include "../views/main/head.php";
-   include "../views/main/header.php";
-   loadModel('Articles', 'openArticles');
-   loadModel('Aside', 'indexAside');
-   loadModel('Footer', 'indexFooter');
- }
 
- function deleteAction(){
-   include "../views/main/head.php";
-   include "../views/main/header.php";
-   loadModel('Articles', 'deleteArticles');
-   loadModel('Aside', 'indexAside');
-   loadModel('Footer', 'indexFooter');
- }
-
- function editAction(){
-   include "../views/main/head.php";
-   include "../views/main/header.php";
-   loadModel('Articles', 'editArticles');
-   loadModel('Aside', 'indexAside');
-   loadModel('Footer', 'indexFooter');
- }
-
- function addAction(){
-   include "../views/main/head.php";
-   include "../views/main/header.php";
-   loadModel('Articles', 'addArticles');
-   loadModel('Aside', 'indexAside');
-   loadModel('Footer', 'indexFooter');
- }
 
  ?>

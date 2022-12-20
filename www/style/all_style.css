@@ -3,8 +3,11 @@
 	body {
 
 		background-color: rgb(125,172,169);
-		margin-right: 300px;
-    margin-left: 300px;
+		margin-right: auto;
+    margin-left: auto;
+		max-width: 960.2px;
+		padding-left: 10px;
+    padding-right: 10px;
 	}
 	#main-block {
 		min-width: 290px;

@@ -4,7 +4,7 @@
     if(!isset($_SESSION['id']))
     echo '<p class = "about all_box">Тут могли располагаться ваши статьи. Войдите чтобы начать!</p>';
     else {
-      echo '<a style="bottom: 10px;" class="art-create article-open-button article-u-button" href="index.php?p=index&action=add">Создать статью</a>';
+      echo '<a style="bottom: 10px;" class="art-create article-open-button article-u-button" href="/article/add">Создать статью</a>';
       if ($GetPg['a_max']>0){
 
           for ($i = $GetPg['a_s']; $i < $GetPg['a_f']; $i++){
@@ -23,9 +23,9 @@
               </header>
               <p>'.$row['text'].'</p>
               <footer class="article-foot_u">
-                  <a class="article-open-button article-u-button" id = "but" href="index.php?p=index&action=open&id_art='.$row['id_ar'].'">Открыть статью</a>
-                  <a class="article-open-button article-u-button" id = "but" href="index.php?p=index&action=delete&id_art='.$row['id_ar'].'">Удалить</a>
-   							 <a class="article-open-button article-u-button" id = "but" href="index.php?p=index&action=edit&id_art='.$row['id_ar'].'">Редактировать</a>
+                  <a class="article-open-button article-u-button" id = "but" href="/article/open/'.$row['id_ar'].'/">Открыть статью</a>
+                  <a class="article-open-button article-u-button" id = "but" href="/article/delete/'.$row['id_ar'].'/">Удалить</a>
+   							 <a class="article-open-button article-u-button" id = "but" href="/article/edit/'.$row['id_ar'].'/">Редактировать</a>
               </footer>
             </article>';
 

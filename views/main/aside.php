@@ -8,7 +8,7 @@
 				 <input id = "lp" type="password" placeholder="Пароль" maxlength="25" size="auto" name="password"></p>
 				 <button id = "lpb" type="submit" form="Autorize">Войти</button>
 				 <p class = "massage">'.$_SESSION['massage'].'</p>
-				 <p >У вас нет аккаунта? - <a id = "reg" href="index.php?p=index&action=register">зарегистрируйтесь!</a></p>
+				 <p >У вас нет аккаунта? - <a id = "reg" href="/main/register/">зарегистрируйтесь!</a></p>
 			 </form>
 			 </div>';
 		 }
@@ -17,7 +17,7 @@
 				 echo $_SESSION['login'];
 				 echo '<div class="user_info">
 				 <br>
-					 <a id = "lpb" href="index.php?p=logout">Выход</a>
+					 <a id = "lpb" href="/main/logout/">Выход</a>
 				 </div>
 				 <nav>
 					 <h1>Blogroll</h1>
@@ -41,7 +41,7 @@
 						 <p style="margin-top: 10px;margin-bottom: 20px;padding-bottom: 40px;">Комментарии:</p>
 						 <p>'.$user_info['u_comment'].'</p>
 					 </div>
-					 <a id = "lpb" href="index.php?p=index&action=logout">Выход</a>
+					 <a id = "lpb" href="/main/logout/">Выход</a>
 				 </div>
 				 <nav>
 					 <h1>Blogroll</h1>

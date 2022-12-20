@@ -94,11 +94,15 @@ function editArticlesAction(){
 
 function deleteArticlesAction(){
   include '../config/db.php';
+  echo'  <!--Центральная часть сайта-->
+  <div class=main-contaner>
+        <main class="all_box">
+        ';
   $id_art = isset($_GET['id_art']) ? $_GET['id_art'] : '';
   if (isset($_SESSION['id'])){
     $rez = $mysqli->query("SELECT * FROM article WHERE author = '$_SESSION[login]' AND id_ar= '$id_art'");
     if (isset($rez)||$_SESSION['login']=='admin'){
-      $mysqli->query("DELETE FROM article WHERE id_ar= $id_art ");
+      $mysqli->query("DELETE FROM article WHERE id_ar = $id_art ");
       echo '<p class = "massage">Статья удалена</p>';
     }
     else {
@@ -109,6 +113,7 @@ function deleteArticlesAction(){
   else {
       echo '<p class = "massage">Отказано в доступе</p>';
   }
+  echo "</main>";
 }
 
 function addArticlesAction(){
@@ -156,7 +161,6 @@ function addArticlesAction(){
     this.style.height = (this.scrollHeight) + "px";//console.log(this.scrollHeight);
     }
   </script>';
-  echo	"</main>";
 }
 
 

@@ -20,9 +20,9 @@
 						<p class = "article-text">'.$row['text'].'</p>
 						<footer class="article-foot_u">
 						<p style = "color:black;" class="author-article">Автор: '.$row['author'].'</p>
-							<a class="article-open-button article-u-button" id = "but" href="index.php?p=index&action=open&id_art='.$row['id_ar'].'">Открыть статью</a>
-							 <a class="article-open-button article-u-button" id = "but" href="index.php?p=index&action=delete&id_art='.$row['id_ar'].'">Удалить</a>
-							 <a class="article-open-button article-u-button" id = "but" href="index.php?p=index&action=edit&id_art='.$row['id_ar'].'">Редактировать</a>
+							<a class="article-open-button article-u-button" id = "but" href="/article/open/'.$row['id_ar'].'/">Открыть</a>
+							 <a class="article-open-button article-u-button" id = "but" href="/article/delete/'.$row['id_ar'].'/">Удалить</a>
+							 <a class="article-open-button article-u-button" id = "but" href="/article/edit/'.$row['id_ar'].'/">Редактировать</a>
 
 						</footer>
 					</article>';
@@ -41,7 +41,7 @@
 						<p>'.$row['text'].'</p>
 						<footer class="article-foot">
 							 <p style = "color:black;" class="author-article">Автор: '.$row['author'].'</p>
-								 <a class="article-open-button article-u-button" id = "but" href="index.php?p=index&action=open&id_art='.$row['id_ar'].'">Открыть статью</a>
+								 <a class="article-open-button article-u-button" id = "but" href="/article/open/'.$row['id_ar'].'/">Открыть</a>
 						</footer>
 					</article>';
 				}
@@ -51,7 +51,7 @@
 			if($GetPg['pa_max']>1){
 				echo '<h1 id = "h1_page" >';
 				for ($i=1; $i <= $GetPg['pa_max']; $i++) {
-					echo '<a id = "page" href=index.php?p=index&s='.($i-1).'>'.$i.'</a>';
+					echo '<a id = "page" href="/main/'.($i-1).'/">'.$i.'</a>';
 				}
 				echo "</h1>";
 			}

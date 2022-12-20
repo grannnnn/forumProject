@@ -9,7 +9,7 @@
 						 $query = PopPostFooter();
 						for ($i = 0; $i < 5; $i++){
 					    $row = mysqli_fetch_assoc($query);
-							echo '<li><a href="index.php?p=article&id_art='.$row['id_ar'].'">'.$row['title'].'</a></li>';
+							echo '<li><a href="/article/open/'.$row['id_ar'].'/">'.$row['title'].'</a></li>';
 						}
 						?>
 					</ul>
