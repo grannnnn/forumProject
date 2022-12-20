@@ -3,7 +3,7 @@
 
 function indexPortfolioAction() {
     include '../config/db.php';
-    $u_page = isset($_GET["page"]) ? $_GET["page"] : 0;
+    $u_page = isset($_GET["page"]) ? clear($_GET["page"]) : 0;
 
     //считаем сначала кол-во статей в базе, которые написал пользователь
     $rez = $mysqli->query("SELECT COUNT(*) as art_count FROM article WHERE author = '$_SESSION[login]'");

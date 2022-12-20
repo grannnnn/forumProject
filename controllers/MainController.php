@@ -21,11 +21,11 @@ function registerAction(){
 
   loadModel('Articles', 'articles');
 
-  if(isset($_POST['rlogin']))  $rl = $_POST['rlogin']; else $rl = '';
-  if(isset($_POST['rpassword']))  $rp = $_POST['rpassword']; else $rp = '';
-  if(isset($_POST['rpassword2']))  $rp2 = $_POST['rpassword2']; else $rp2 = '';
-  if(isset($_POST['artcl']))  $ra = $_POST['artcl']; else $ra = 5;
-
+  if(isset($_POST['rlogin']))  $rl = clear($_POST['rlogin']); else $rl = '';
+  if(isset($_POST['rpassword']))  $rp = clear($_POST['rpassword']); else $rp = '';
+  if(isset($_POST['rpassword2']))  $rp2 = clear($_POST['rpassword2']); else $rp2 = '';
+  if(isset($_POST['artcl']))  $ra = clear($_POST['artcl']); else $ra = 5;
+  
   if ($rl == ''){
     $_SESSION['massage'] = ' ';
   }

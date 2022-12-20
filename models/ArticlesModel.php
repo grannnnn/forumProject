@@ -9,7 +9,7 @@ function ArticlesAction(){
 
   //кол-во статей на главном экране
   $a_u = isset($_SESSION['id']) ? $_SESSION['a_u'] : 5;
-  $u_page = isset($_GET["s"]) ? $_GET["s"] : 0;
+  $u_page = isset($_GET["s"]) ? clear($_GET["s"]) : 0;
 
   $GetPg = Getpage($a_max, $a_u, $u_page);
 
@@ -20,7 +20,7 @@ function ArticlesAction(){
 
 function openArticlesAction(){
   include '../config/db.php';
-  	$id_art = isset($_GET['id_art']) ? $_GET['id_art'] : '';
+  	$id_art = isset($_GET['id_art']) ? clear($_GET['id_art']) : '';
     echo'  <!--Центральная часть сайта-->
   	<div class=main-contaner>
   				<main class="all_box">
@@ -38,13 +38,13 @@ function openArticlesAction(){
 
 function editArticlesAction(){
   include '../config/db.php';
-  $id_art = isset($_GET['id_art']) ? $_GET['id_art'] : '';
+  $id_art = isset($_GET['id_art']) ? clear($_GET['id_art']) : '';
   $_SESSION['massage2'] = ' ';
 
   if (isset($_SESSION['id'])){
-    if(isset($_POST['date1']))  $date = $_POST['date1']; else $date = '';
-    if(isset($_POST['title1']))  $title = $_POST['title1']; else $title = '';
-    if(isset($_POST['text1']))  $text = $_POST['text1']; else $text = '';
+    if(isset($_POST['date1']))  $date = clear($_POST['date1']); else $date = '';
+    if(isset($_POST['title1']))  $title = clear($_POST['title1']); else $title = '';
+    if(isset($_POST['text1']))  $text = clear($_POST['text1']); else $text = '';
 
     if(isset($_POST['date1']) && isset($_POST['title1']) && isset($_POST['text1'])){
         $rez = $mysqli->query("UPDATE `article` SET `date` = '$date',`title` = '$title',
@@ -118,9 +118,9 @@ function deleteArticlesAction(){
 
 function addArticlesAction(){
   include '../config/db.php';
-  $date = isset($_POST['date']) ? $_GET['date'] : '';
-  $title = isset($_POST['title']) ? $_GET['title'] : '';
-  $text = isset($_POST['text']) ? $_GET['text'] : '';
+  $date = isset($_POST['date']) ? clear($_GET['date']) : '';
+  $title = isset($_POST['title']) ? clear($_GET['title']) : '';
+  $text = isset($_POST['text']) ? clear($_GET['text']) : '';
 
   if($date == '' && $title == '' && $text == ''){
       $_SESSION['massage2'] = ' ';

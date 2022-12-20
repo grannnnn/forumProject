@@ -3,8 +3,9 @@
 function indexAsideAction(){
   include '../config/db.php';
 
-  $l = isset($_POST['login']) ? $_POST['login'] : '';
-  $p = isset($_POST['password']) ? $_POST['password'] : '';
+  $l = isset($_POST['login']) ? clear($_POST['login']) : '';
+  $p = isset($_POST['password']) ? clear($_POST['password']) : '';
+
   echo $l;
   $rez = $mysqli->query("SELECT * FROM user WHERE login = '$l' AND password = '$p'");
 
@@ -17,7 +18,7 @@ function indexAsideAction(){
    $_SESSION['id'] = $user['id_user'];
    $_SESSION['login'] = $user['login'];
    $_SESSION['a_u'] = $user['articles'];
-   echo "<script>self.location='../index.php';</script>";
+   echo "<script>self.location='/';</script>";
   }
   else {
    $_SESSION['massage'] = 'Неверный логин или пароль';

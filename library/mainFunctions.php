@@ -37,6 +37,15 @@ function Getpage($a_max, $a_u, $u_page){
   return  $arr;
 }
 
+function clear($value){
+  $value = trim($value);
+  $value = stripslashes($value);
+  $value = strip_tags($value);
+  $value = htmlspecialchars($value);
+
+  return $value;
+}
+
 
 
  ?>
