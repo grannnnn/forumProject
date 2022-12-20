@@ -31,6 +31,12 @@ text-decoration: none;
 color: #7573ab;
 font-weight: bold;
 text-decoration: none;
+cursor: pointer;
+}
+
+
+#registerBox{
+    display: none;
 }
 
 .forma1{
@@ -41,7 +47,7 @@ position: absolute;
 z-index: 30;
 background-color: rgb(235,232,217);
 width: 174px;
-margin-left: 719px;
+margin-left: 20px;
 text-align: center;
 }
 

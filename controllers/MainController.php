@@ -24,8 +24,8 @@ function registerAction(){
   if(isset($_POST['rlogin']))  $rl = clear($_POST['rlogin']); else $rl = '';
   if(isset($_POST['rpassword']))  $rp = clear($_POST['rpassword']); else $rp = '';
   if(isset($_POST['rpassword2']))  $rp2 = clear($_POST['rpassword2']); else $rp2 = '';
-  if(isset($_POST['artcl']))  $ra = clear($_POST['artcl']); else $ra = 5;
-  
+  if(isset($_POST['email']))  $re = clear($_POST['email']); else $re =  '';
+
   if ($rl == ''){
     $_SESSION['massage'] = ' ';
   }
@@ -35,8 +35,8 @@ function registerAction(){
           $_SESSION['massage'] = 'Логин уже существует';
         }
       else {
-        $rez = $mysqli->query("INSERT INTO `user` (`id_user`, `login`, `password`, `articles`)
-                VALUES (NULL, '$rl', '$rp', '$ra');");
+        $rez = $mysqli->query("INSERT INTO `user` ( `login`, `password`, `articles`, `email`)
+                VALUES ( '$rl', '$rp', '5', '$re');");
         $_SESSION['massage'] = 'Регистрация прошла успешно!';
       }
 
@@ -44,18 +44,7 @@ function registerAction(){
   else  $_SESSION['massage'] = 'Пароли не совпадают';
 
 
-  echo '<div class = "forma2 asside">
-    <form  class = "formra" id="Register" method="POST">
-      <p>Регистрация</p>
-      <input id = "lp" type="text" placeholder="Логин" maxlength="25" size="auto" name="rlogin"></p>
-        <input id = "lp" type="text" placeholder="Статьи на странице" maxlength="2" size="auto" name="artcl"></p>
-      <input id = "lp" type="password" placeholder="Пароль" maxlength="25" size="auto" name="rpassword"></p>
-      <input id = "lp" type="password" placeholder="Повторите пароль" maxlength="25" size="auto" name="rpassword2"></p>
-      <button id = "lpb" type="submit" form="Register">Зарегистрироваться</button>
-      <p class = "massage">'.$_SESSION['massage'].'</p>
-      <p >У вас есть аккаунт? - <a id = "reg" href="/main/">авторизируйтесь!</a></p>
-    </form>
-  </div>';
+  
 
   loadModel('Aside', 'indexAside');
   loadModel('Footer', 'indexFooter');
