@@ -28,11 +28,9 @@
       <td>Для того чтобы сохранить данные введите текущий пароль</td>
       <td><input id = "lp" type="password" name="curPwd" value=""></td>
     </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <button id = "lpb" type="submit" form="user_edit">Сохранить</button>
-    </tr>
       </table>
+      <td>&nbsp;</td>
+      <button id = "lpb" type="submit" form="user_edit" style="float: right;margin-right: 55px;margin-top: 20px;padding-left: 50px;padding-right: 50px;">Сохранить</button>
       <p class = "massage">'.$_SESSION['massage'].'</p>
       </form>';
      ?>
