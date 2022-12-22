@@ -3,6 +3,7 @@
 
 function indexPortfolioAction() {
     include '../config/db.php';
+    
     $u_page = isset($_GET["page"]) ? clear($_GET["page"]) : 0;
 
     //считаем сначала кол-во статей в базе, которые написал пользователь

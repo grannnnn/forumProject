@@ -46,6 +46,16 @@ function clear($value){
   return $value;
 }
 
+function createRsArray($rs){
+  if(!$rs) return false;
+
+  $rsmass = array();
+  while ($row = mysqli_fetch_assoc($rs)) {
+    $rsmass[]=$row;
+  }
+  return $rsmass;
+}
+
 
 
  ?>
