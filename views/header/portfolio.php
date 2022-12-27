@@ -11,6 +11,7 @@
             if ($i == $GetPg['a_max']) break;
             $row = mysqli_fetch_assoc($query);
             $datem = getDateForBD($row['date']);
+            $comment = commentForArticle($c, $row['id']);
             echo
             '<article>
               <header class="article-head">
@@ -19,7 +20,7 @@
                   <div class = date>'.$datem[1].'<span>'.$datem[2].'</span></div>
                 </div>
                  <h2>'.$row['title'].'</h2>
-                 <button type=button class="article-button" onclick="delArticle(1)">'.$row['comment'].'</button>
+                 <button type=button class="article-button" onclick="delArticle(1)">'.$comment.'</button>
               </header>
               <p>'.$row['text'].'</p>
               <footer class="article-foot_u">

@@ -16,7 +16,19 @@ function indexPortfolioAction() {
 
     //рассчитываем кол-во страниц
     $GetPg = Getpage($u_a_max, $u_a_u, $u_page);
-$query = $mysqli->query("SELECT * FROM article WHERE id_user = '$_SESSION[id]' LIMIT $u_page,$u_a_u");
+    $query = $mysqli->query("SELECT article.*, user.login FROM article JOIN user on (user.id=article.id_user) WHERE id_user = '$_SESSION[id]' ORDER BY article.id LIMIT $GetPg[a_s],$GetPg[a_f] ");
+    $qquery = $mysqli->query("SELECT article.id, count(comment.id) FROM `article` join comment on (article.id=comment.id_art) GROUP BY article.id ORDER BY article.id");
+    $c = createRsArray($qquery);
     include '../views/header/portfolio.php';
+}
+function commentForArticle($c, $id){
+  include '../config/db.php';
+  $countComm = 0;
+  foreach ($c as $key) {
+      if ($key['id']==$id) {
+        return $key['count(comment.id)'];
+    }
+  }
+  return $countComm;
 }
  ?>
