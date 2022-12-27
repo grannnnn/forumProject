@@ -14,26 +14,82 @@ function ArticlesAction(){
   $GetPg = Getpage($a_max, $a_u, $u_page);
 
   //достаем статьи из базы
-  $query = $mysqli->query("SELECT * FROM article LIMIT $GetPg[a_s],$GetPg[a_f]");
+  $query = $mysqli->query("SELECT article.*, user.login FROM article JOIN user on (user.id=article.id_user) ORDER BY article.id LIMIT $GetPg[a_s],$GetPg[a_f] ");
+  $qquery = $mysqli->query("SELECT article.id, count(comment.id) FROM `article` join comment on (article.id=comment.id_art) GROUP BY article.id ORDER BY article.id");
+  $c = createRsArray($qquery);
+
   include '../views/header/articles.php';
 }
 
+function commentForArticle($c, $id){
+  include '../config/db.php';
+  $countComm = 0;
+  foreach ($c as $key) {
+      if ($key['id']==$id) {
+        return $key['count(comment.id)'];
+    }
+  }
+  return $countComm;
+}
 function openArticlesAction(){
   include '../config/db.php';
   	$id_art = isset($_GET['id_art']) ? clear($_GET['id_art']) : '';
+    $textcomment = isset($_POST['textcomment']) ? clear($_POST['textcomment']) : null;
+
+    if (isset($textcomment)) {
+      $date = date('d.m.Y');
+      $rez = $mysqli->query("INSERT INTO `comment` (`id_art`, `id_user`, `comment`, `date`)
+      VALUES ('$id_art', '$_SESSION[id]', '$textcomment', ' $date') ");
+      $textcomment = NULL;
+    }
     echo'  <!--Центральная часть сайта-->
   	<div class=main-contaner>
   				<main class="all_box">
           ';
   $rez = $mysqli->query("SELECT * FROM article WHERE  id= '$id_art'");
   $row = mysqli_fetch_assoc($rez);
+  $rez->free();
   echo '
           <p>'.$row['date'].'</p>
           <p>'.$row['title'].'</p>
           <p>'.$row['text'].'</p>';
 
-  	echo	"</main>";
+    echo	'<p>Комментарии:</p>';
+    $rez = $mysqli->query("SELECT comment.*, user.login FROM comment JOIN user on (user.id=comment.id_user) WHERE  comment.id_art= '$id_art'");
+    $rez=createRsArray($rez);
+    if ($rez) {
+      foreach ($rez as $key) {
+        echo '
+        <p>'.$key['date'].'  '.$key['login'].'</p>
+        <p>'.$key['comment'].'</p>
+        ';
+      }
+    }
+    else {
+      echo "<p>Комментариев нет</p>";
+    }
+    if (isset($_SESSION['id'])){
+    echo '<form id="article_comment" method="post">
+            <textarea  id = "lp" cols="50" rows="3" name = "textcomment"></textarea>
+            <button id = "lpb" type="submit" form="article_comment">Добавить</button>
+      </form>
+      <script>
+      		var tx = document.getElementsByTagName("textarea");
+      		for (var i = 0; i < tx.length; i++) {
+      		tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+      		tx[i].addEventListener("input", OnInput, false);
+      		}
 
+      		function OnInput() {
+      		this.style.height = "auto";
+      		this.style.height = (this.scrollHeight) + "px";//console.log(this.scrollHeight);
+      		}
+      	</script>';
+  	echo	"</main>";}
+      else {
+        echo "Войдите чтобы написать комментарий!";
+        echo	"</main>";
+      }
 }
 
 function editArticlesAction(){
@@ -48,12 +104,12 @@ function editArticlesAction(){
 
     if(isset($_POST['date1']) && isset($_POST['title1']) && isset($_POST['text1'])){
         $rez = $mysqli->query("UPDATE `article` SET `date` = '$date',`title` = '$title',
-          `text` = '$text' WHERE `article`.`id_ar` = '$id_art'; ");
+          `text` = '$text' WHERE `article`.`id` = '$id_art'; ");
         $_SESSION['massage2'] = 'Статья отредактирована';
         unset($_POST['text1'], $_POST['date1'], $_POST['text1']);
     }
 
-    $rez = $mysqli->query("SELECT * FROM article WHERE author = '$_SESSION[login]' AND id_ar= '$id_art'");
+    $rez = $mysqli->query("SELECT * FROM article WHERE id_user = '$_SESSION[id]' AND id= '$id_art'");
     if(isset($rez)||$_SESSION['login']=='admin'){
       $row = mysqli_fetch_assoc($rez);
       echo'  <!--Центральная часть сайта-->
@@ -100,9 +156,9 @@ function deleteArticlesAction(){
         ';
   $id_art = isset($_GET['id_art']) ? $_GET['id_art'] : '';
   if (isset($_SESSION['id'])){
-    $rez = $mysqli->query("SELECT * FROM article WHERE author = '$_SESSION[login]' AND id_ar= '$id_art'");
+    $rez = $mysqli->query("SELECT * FROM article WHERE id_user = '$_SESSION[id]' AND id= '$id_art'");
     if (isset($rez)||$_SESSION['login']=='admin'){
-      $mysqli->query("DELETE FROM article WHERE id_ar = $id_art ");
+      $mysqli->query("DELETE FROM article WHERE id = $id_art ");
       echo '<p class = "massage">Статья удалена</p>';
     }
     else {
@@ -130,8 +186,8 @@ function addArticlesAction(){
     echo $_POST['date'];
     $comm = rand(5, 50);
     $rez = $mysqli->query("INSERT INTO `article` (`id_ar`, `date`,
-      `title`, `comment`, `text`, `author`) VALUES (NULL,'$date',
-      '$title', '$comm', '$text', '$_SESSION[login]'); ");
+      `title`, `comment`, `text`, `id_user`) VALUES (NULL,'$date',
+      '$title', '$comm', '$text', '$_SESSION[id]'); ");
     $_SESSION['massage2'] = 'Статья добавлена';
   }
   echo'  <!--Центральная часть сайта-->

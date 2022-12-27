@@ -12,7 +12,7 @@ function indexAsideAction(){
        $_SESSION['massage'] = ' ';
       }
             elseif(isset($rez[0])){
-             $_SESSION['id'] = $rez[0]['id_user'];
+             $_SESSION['id'] = $rez[0]['id'];
              $_SESSION['email'] = $rez[0]['email'];
              $_SESSION['login'] = $rez[0]['login'];
              $_SESSION['a_u'] = $rez[0]['articles'];
@@ -30,10 +30,10 @@ function userAside(){
   include '../config/db.php';
   $user_info[] = array();
   //подсчет статей и комментариев пользователя
-  $rez = $mysqli->query("SELECT COUNT(*) as count FROM article WHERE user_name = '$_SESSION[login]'");
+  $rez = $mysqli->query("SELECT COUNT(*) as count FROM article WHERE id_user = '$_SESSION[id]'");
   $user_info['u_articles'] = $rez->fetch_object()->count;
   $rez->free();
-  $rez = $mysqli->query("SELECT SUM(comment) as sum FROM article WHERE user_name = '$_SESSION[login]'");
+  $rez = $mysqli->query("SELECT COUNT(*) as sum FROM comment WHERE id_user = '$_SESSION[id]'");
   $user_info['u_comment'] = $rez->fetch_object()->sum;
   $rez->free();
     return $user_info;

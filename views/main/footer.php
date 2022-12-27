@@ -6,8 +6,7 @@
 					<h1>Popular Posts</h1>
 					<ul class=links>
 						<?php
-						 $query = PopPostFooter();
-						for ($i = 0; $i < 5; $i++){
+						for ($i = 0; $i <  5; $i++){
 					    $row = mysqli_fetch_assoc($query);
 							echo '<li><a href="/article/open/'.$row['id'].'/">'.$row['title'].'</a></li>';
 						}
