@@ -23,9 +23,9 @@
               </header>
               <p>'.$row['text'].'</p>
               <footer class="article-foot_u">
-                  <a class="article-open-button article-u-button" id = "but" href="/article/open/'.$row['id_ar'].'/">Открыть статью</a>
-                  <a class="article-open-button article-u-button" id = "but" href="/article/delete/'.$row['id_ar'].'/">Удалить</a>
-   							 <a class="article-open-button article-u-button" id = "but" href="/article/edit/'.$row['id_ar'].'/">Редактировать</a>
+                  <a class="article-open-button article-u-button" id = "but" href="/article/open/'.$row['id'].'/">Открыть статью</a>
+                  <a class="article-open-button article-u-button" id = "but" href="/article/delete/'.$row['id'].'/">Удалить</a>
+   							 <a class="article-open-button article-u-button" id = "but" href="/article/edit/'.$row['id'].'/">Редактировать</a>
               </footer>
             </article>';
 

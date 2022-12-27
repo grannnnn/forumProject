@@ -6,7 +6,7 @@
 				if ($i == $GetPg['a_max']) break;
 				$row = mysqli_fetch_assoc($query);
 				$datem = getDateForBD($row['date']);
-				if (isset($_SESSION['id'])&&$_SESSION['login'] == "admin"||$_SESSION['login']==$row['author']){
+				if (isset($_SESSION['id'])&&$_SESSION['login'] == "admin"||$_SESSION['login']==$row['user_name']){
 				echo
 					'<article>
 						<header class="article-head">
@@ -40,8 +40,8 @@
 						</header>
 						<p>'.$row['text'].'</p>
 						<footer class="article-foot">
-							 <p style = "color:black;" class="author-article">Автор: '.$row['author'].'</p>
-								 <a class="article-open-button article-u-button" id = "but" href="/article/open/'.$row['id_ar'].'/">Открыть</a>
+							 <p style = "color:black;" class="author-article">Автор: '.$row['user_name'].'</p>
+								 <a class="article-open-button article-u-button" id = "but" href="/article/open/'.$row['id'].'/">Открыть</a>
 						</footer>
 					</article>';
 				}

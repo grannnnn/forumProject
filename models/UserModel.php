@@ -30,10 +30,10 @@ function userAside(){
   include '../config/db.php';
   $user_info[] = array();
   //подсчет статей и комментариев пользователя
-  $rez = $mysqli->query("SELECT COUNT(*) as count FROM article WHERE author = '$_SESSION[login]'");
+  $rez = $mysqli->query("SELECT COUNT(*) as count FROM article WHERE user_name = '$_SESSION[login]'");
   $user_info['u_articles'] = $rez->fetch_object()->count;
   $rez->free();
-  $rez = $mysqli->query("SELECT SUM(comment) as sum FROM article WHERE author = '$_SESSION[login]'");
+  $rez = $mysqli->query("SELECT SUM(comment) as sum FROM article WHERE user_name = '$_SESSION[login]'");
   $user_info['u_comment'] = $rez->fetch_object()->sum;
   $rez->free();
     return $user_info;

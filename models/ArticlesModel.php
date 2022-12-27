@@ -25,7 +25,7 @@ function openArticlesAction(){
   	<div class=main-contaner>
   				<main class="all_box">
           ';
-  $rez = $mysqli->query("SELECT * FROM article WHERE  id_ar= '$id_art'");
+  $rez = $mysqli->query("SELECT * FROM article WHERE  id= '$id_art'");
   $row = mysqli_fetch_assoc($rez);
   echo '
           <p>'.$row['date'].'</p>
