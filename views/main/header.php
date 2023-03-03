@@ -1,5 +1,4 @@
 ﻿<body>
-<!--Шапка сайта-->
 	<header>
 		<div id=logo-block>
 		   <div id=logo>

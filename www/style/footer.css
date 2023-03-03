@@ -1,6 +1,9 @@
 /*Подвал сайта*/
 footer {
     width: 100%; /* Ширина блока */
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
 }
 .footer-contaner {
   display: grid;

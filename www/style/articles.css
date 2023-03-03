@@ -4,6 +4,9 @@
 		width: 100%; /* Ширина блока */
 		display: grid;
 		grid-template-columns: 3fr  0fr 1fr;
+		margin-right: auto;
+		margin-left: auto;
+				max-width: 960.2px;
 
 }
 
@@ -18,8 +21,7 @@ article{
 		padding: 20px;
 		width: 600px;
 		margin: 0 0 30px 0;
-		color: #eee;
-		-webkit-box-shadow: 0 0 10px #629996;
+		-webkit-box-shadow: 0 0 10px #a6bdbc;
 		border-width: 0px 0px 0px 0px;
 
 }
@@ -28,9 +30,8 @@ article{
 			display: grid;
 			grid-template-columns: 1fr 11fr 1fr;
 			height: 40px;
-			background-color: rgb(0,106,141);
+			background-color: #cde4f6;
 			border-radius: 8px;
-			background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #0081ac),color-stop(1, #005b79));
 			margin-bottom: 10px;
 }
 
@@ -40,7 +41,7 @@ article{
 		height: 40px;
 		margin-right: 12px;
 		padding-right: 10px;
-		background-color: rgb(100 76 76 / 50%);
+		background-color: rgb(241 249 255);
 		border-top-left-radius: 8px;
 		border-bottom-left-radius: 8px;
 }
@@ -75,21 +76,23 @@ article{
 		width: 60px;
 	  background-color: #ca0000;
 		color: #eee;
-		background-color: #970000;
-		box-shadow: inset 0 35px 35px -18px #ca0000, inset 3px 0 12px #600;
+		background-color: #008eff;
 		border-width: 0px;
 		cursor: pointer;
 	}
 	article h2{
 		float: left;
-		padding-left: 7px;
-		margin-block-start: 1px;
-		margin-block-end: 0;
-		margin-bottom: 5px;
+		color: black;
 		margin-top: 5px;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
+		margin-bottom: 0;
+		color: var(--bs-card-cap-color);
+		background-color: var(--bs-card-cap-bg);
+		border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
+		color: #595b5c;
 	}
 	article p{
 		margin-block-start: 10px;
@@ -118,10 +121,9 @@ article{
 		border-radius: 10px;
 		height: 34px;
 		position: relative;
-		background-color: #970000;
+		background-color: #008eff;
 		cursor: pointer;
 		border-width: 0px;
-		box-shadow: inset 0 35px 35px -18px #ca0000, inset 3px 0 12px #600;
 		text-decoration: none;
 }
 

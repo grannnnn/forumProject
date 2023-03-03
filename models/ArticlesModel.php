@@ -50,25 +50,26 @@ function openArticlesAction(){
   $row = mysqli_fetch_assoc($rez);
   $rez->free();
   echo '
-          <p>'.$row['date'].'</p>
-          <p>'.$row['title'].'</p>
+          <h3>'.$row['title'].'</h3>
+          <h5>'.$row['date'].'</h5>
           <p>'.$row['text'].'</p>';
 
-    echo	'<p>Комментарии:</p>';
+    echo	'<div class=" comm"><p>Комментарии:</p>';
     $rez = $mysqli->query("SELECT comment.*, user.login FROM comment JOIN user on (user.id=comment.id_user) WHERE  comment.id_art= '$id_art'");
     $rez=createRsArray($rez);
     if ($rez) {
       foreach ($rez as $key) {
         echo '
         <p>'.$key['date'].'  '.$key['login'].'</p>
-        <p>'.$key['comment'].'</p>
+        <p style="border-bottom: 1px solid #2196f3;padding-bottom: 8px;">'.$key['comment'].'</p>
         ';
       }
+      echo "</div>";
     }
     else {
-      echo "<p>Комментариев нет</p>";
+      echo "<p>Комментариев нет</p> </div>";
     }
-    if (isset($_SESSION['id'])){
+    if (!isset($_SESSION['id'])){
     echo '<form id="article_comment" method="post">
             <textarea  id = "lp" cols="50" rows="3" name = "textcomment"></textarea>
             <button id = "lpb" type="submit" form="article_comment">Добавить</button>

@@ -1,13 +1,12 @@
 /*Общие настройки*/
 
 	body {
-
-		background-color: rgb(125,172,169);
+font-family: 'Raleway', sans-serif;
+		background-color: #cde4f6;
 		margin-right: auto;
     margin-left: auto;
-		max-width: 960.2px;
-		padding-left: 10px;
-    padding-right: 10px;
+		margin-top: 0px;
+
 	}
 	#main-block {
 		min-width: 290px;
@@ -22,16 +21,14 @@
 	}
 
 	article, aside, .footer-block {
-			border: 1px solid rgb(125,132,107);
-			background-color: rgb(235,232,217);
+			background-color: #e9ecee;
 			border-radius: 13px;
 	}
 
   /*Стиль для одинаковых боксов*/
 
   .all_box{
-  	border: 1px solid rgb(125,132,107);
-  	background-color: rgb(235,232,217);
+  	background-color: #e9ecee;
   	border-radius: 13px;
   	padding: 20px;
   	margin: 0 47px 30px 0;
