@@ -13,17 +13,6 @@ aside nav{
 	margin-top: 90px;
 }
 
-aside h1, footer h1{
-	font-size: 18px;
-	line-height: 28px;
-	height: 28px;
-	margin-bottom: 10px;
-	background-color: #cde4f6;
-	color: #595b5c;
-	padding: 0 10px;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-}
 
 aside ul, footer ul{
 	list-style: none;
@@ -36,14 +25,14 @@ aside li, footer li{
 	line-height: 20px;
 	margin-bottom: 5px;
 	text-align: left;
-	border-bottom: 1px solid #2196f3;
+	border-bottom: 1px solid #6d818c;
 	-o-transition: all 0.5s ease-out;
 	-moz-transition: all 0.5s ease-out;
 	-webkit-transition: all 0.5s ease-out;
 	text-decoration: none;
 }
 
-aside nav ul li a, footer ul li a{
+aside nav ul li a{
 	text-decoration: none;
 	color: #595b5c;
 }
@@ -51,4 +40,13 @@ aside nav ul li a, footer ul li a{
 .user_info a{
 	text-decoration: none;
 	color: #595b5c;
+}
+
+.heading{
+	font-size: 18px;
+color: #000;
+font-weight: 400;
+margin-bottom: 30px;
+padding-bottom: 20px;
+border-bottom: 1px solid #e6e6e6;
 }

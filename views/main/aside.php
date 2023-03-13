@@ -36,7 +36,7 @@
 				 <a href="/user/">'.$user_name.'</a>
 					 <div class="u_articles">
 
-						 <p style="text-align: left; margin-left: 9px;" >Статьи:</p>
+						 <p style="text-align: left; margin-left: 20px;" >Статьи:</p>
 						 <p>'.$user_info['u_articles'].'</p>
 					 </div>
 					 <div class="u_articles">
@@ -46,7 +46,7 @@
 					 <a id = "lpb" href="/user/logout/">Выход</a>
 				 </div>
 				 <nav>
-					 <h1>Blogroll</h1>
+					 <h1 class="heading">Blogroll</h1>
 					 <ul class=links>
 						 <li><a href=#>A List of</a></li>
 						 <li><a href=#>Friendly Blogs</a></li>

@@ -1,13 +1,15 @@
 /*Подвал сайта*/
 footer {
     width: 100%; /* Ширина блока */
-    max-width: 1000px;
-    margin-right: auto;
-    margin-left: auto;
+    color: #fff;
+    background-color: #214252;
 }
 .footer-contaner {
   display: grid;
+  margin-right: auto;
+  margin-left: auto;
     grid-template-columns: 1fr 1fr 1fr;
+    max-width: 1000px;
 }
 .footer-block {
   min-height: 80px; /* Высота блока */
@@ -19,3 +21,14 @@ footer {
   text-align: center;
   margin-top: 5px;
 }
+
+ footer h3{
+   font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1rem;
+ }
+
+ footer ul li a{
+   text-decoration: none;
+   color: #fff;
+ }

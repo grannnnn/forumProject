@@ -12,18 +12,21 @@ aside {
 margin: 10px 0;
 padding: 10px;
 border: unset;
-border-bottom: 2px solid #2196f3;
-background-color:  #e9ecee;
+border-bottom: 2px solid #214252;
 }
 
 #lpb{
 padding: 10px 25px;
-color: #eee;
 border: none;
-background-color: #008eff;
 cursor: pointer;
 border-radius: 10px;
 text-decoration: none;
+color: #fff;
+background-color: #214252;
+font-size: 12px;
+font-weight: 600;
+letter-spacing: .1rem;
+text-transform: uppercase;
 }
 
 #reg{
@@ -49,9 +52,7 @@ cursor: pointer;
 
 }
 
-.forma1{
-padding-top: 30px;
-}
+
 .forma2{
 margin-left: 20px;
 text-align: center;
@@ -63,14 +64,13 @@ padding: 10px;
 text-align: center;
 font-weight: bolder;
 color: rgb(153 7 12);
-background-color: #e9ecee;
 }
 
-.comm{
-  background-color: white;
-  padding-top: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    box-shadow: 0 0 10px rgb(189 211 220);
+.comm h3{
+  font-size: 18px;
+color: #000;
+font-weight: 400;
+margin-bottom: 30px;
+padding-bottom: 20px;
+border-bottom: 1px solid #e6e6e6;
 }

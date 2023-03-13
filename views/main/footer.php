@@ -3,7 +3,7 @@
 		<div class=footer-contaner>
 			<div class=footer-block>
 				<section>
-					<h1>Popular Posts</h1>
+					<h3>POPULAR POSTS</h3>
 					<ul class=links>
 						<?php
 						for ($i = 0; $i <  5; $i++){
@@ -16,7 +16,7 @@
 			</div>
 			<div class=footer-block>
 				<section>
-					<h1>Recent Comments</h1>
+					<h3>RECENT COMMENTS</h3>
 					<ul id=comments>
 						<li>
 							<a href="">Tincidunt justo sed feugiat eget ligula nec, porta luctus&hellip;</a>
@@ -38,7 +38,7 @@
 			</div>
 			<div class=footer-block>
 				<section>
-					<h1>Company Bio</h1>
+					<h3>COMPANY BIO</h3>
 					<p>Nisl vestibulum ex, quis lectus elit consequatur, per lobortis ipsum, sit in id nunc vitae felis. Ut quae pellentesque vitae vel ligula, non quis quis quam, ante orci lectus tortor sapien sed aliquam, neque nam vehicula.</p>
 					<p>Iaculis et quis, sociosqu aenean pulvinar metus, sed quis, sagittis a, at volutpat tempor.</p>
 				</section>
